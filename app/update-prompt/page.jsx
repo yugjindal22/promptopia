@@ -1,15 +1,11 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Form from "@components/Form";
 
-
-
 const EditPrompt = () => {
-
-
     const router = useRouter();
     
     const [submitting, setSubmitting] = useState(false);
@@ -17,6 +13,21 @@ const EditPrompt = () => {
         prompt: "",
         tag:"",
     });
+
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <EditPromptContent 
+                router={router} 
+                submitting={submitting} 
+                setSubmitting={setSubmitting} 
+                post={post} 
+                setPost={setPost} 
+            />
+        </Suspense>
+    );
+}
+
+const EditPromptContent = ({ router, submitting, setSubmitting, post, setPost }) => {
     const searchParams = useSearchParams();
     const promptId = searchParams.get('id');
 
@@ -58,15 +69,15 @@ const EditPrompt = () => {
         if(promptId) getPromptDetails();
     },[promptId]);
 
-  return (
-    <Form
-        type="Edit"
-        post={post}
-        setPost={setPost}
-        submitting={submitting}
-        handleSubmit={UpdatePrompt}
-    />
-  )
+    return (
+        <Form
+            type="Edit"
+            post={post}
+            setPost={setPost}
+            submitting={submitting}
+            handleSubmit={UpdatePrompt}
+        />
+    )
 }
 
 export default EditPrompt
