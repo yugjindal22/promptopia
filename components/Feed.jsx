@@ -42,6 +42,11 @@ const Feed = () => {
     filterPosts(e.target.value);
   };
 
+  const handleTagClick = (tag) => {
+    setSearchText(tag);
+    filterPosts(tag);
+  }
+
   const filterPosts = (searchText) => {
     const filtered = posts.filter(post => 
       (post.creator.username && post.creator.username.includes(searchText)) ||
@@ -66,7 +71,7 @@ const Feed = () => {
 
       <PromptCardList 
         data={filteredPosts}
-        handleTagClick={() => {}}
+        handleTagClick={handleTagClick}
       />
     </section>
   );
