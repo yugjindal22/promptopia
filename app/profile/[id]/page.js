@@ -13,7 +13,7 @@ const MyProfile = () => {
   const [user, setUser] = useState(null); // State to store user data
 
   useEffect(() => {
-    console.log('userId', userId);
+    
     const fetchUserData = async () => {
       const response = await fetch(`/api/users/${userId}`);
       const data = await response.json();
@@ -36,7 +36,7 @@ const MyProfile = () => {
     <div>
       <Profile 
         name={`${user?.username}'s`}
-        desc={`This is ${user?.username}'s personalised profile page`}
+        desc={`Welcome to ${user?.username}'s personalised profile page, Explore ${user?.username}'s exceptional prompts and be inspired by the power of thier creativity!`}
         data={posts}
         handleEdit={() => {}}
         handleDelete={() => {}}
