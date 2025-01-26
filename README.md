@@ -16,4 +16,4 @@ Deployed on Vercel:
 - **Prompt Creation**: Add new prompts and customize them with relevant tags.  
 - **Search & Filter**: Search prompts by keyword or browse by categories.  
 - **User Profiles**: View individual profiles and the prompts they have posted.  
-- **Authentication**: Secure sign-in with popular providers (if implemented).  
+- **Authentication**: Secure sign-in with popular providers like google.  
